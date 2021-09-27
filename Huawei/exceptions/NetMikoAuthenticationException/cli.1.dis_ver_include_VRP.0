@@ -1,0 +1,7 @@
+{
+    "exception": "napalm.base.exceptions.NetMikoAuthenticationException",
+    "args": [
+        "NetMikoAuthenticationException"
+    ],
+    "kwargs": {}
+}

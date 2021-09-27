@@ -1,0 +1,7 @@
+{
+    "exception": "napalm.base.exceptions.ConnectTimeoutError",
+    "args": [
+        "ConnectTimeoutError"
+    ],
+    "kwargs": {}
+}

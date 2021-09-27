@@ -1,0 +1,7 @@
+{
+    "exception": "napalm.base.exceptions.ConnectionException",
+    "args": [
+        "ConnectionException"
+    ],
+    "kwargs": {}
+}
