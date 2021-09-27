@@ -12,7 +12,7 @@ git clone https://github.com/MaZzikeen/netbox_updater_napalm
 Create a virtual environment to run the script(optional):
 ```
 python3 -m venv venv
-venv/bin/activate
+source venv/bin/activate
 ```
 
 Install required libraries:
