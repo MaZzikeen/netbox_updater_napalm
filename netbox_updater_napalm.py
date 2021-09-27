@@ -1,4 +1,5 @@
 import re
+import os
 import argparse
 import logging
 import concurrent.futures
@@ -15,6 +16,10 @@ from netmiko import NetMikoAuthenticationException
 from ncclient.transport.errors import AuthenticationError
 from jnpr.junos.exception import ConnectAuthError as JuniperConnectionAuthError
 from pan.xapi import PanXapiError
+
+
+LOGLEVEL = os.environ.get('LOGLEVEL', 'ERROR').upper()
+logging.basicConfig(level=LOGLEVEL)
 
 
 driver_platform = {
@@ -36,6 +41,7 @@ def read_from_huawei_devices(device_driver):
     seprated funcation is defined for huawei devices to send cli command
     display version.
     """
+    logging.info('reading user %s driver', device_driver)
     try:
         device_driver.open()
         send_command = str(device_driver.cli(['dis ver | include VRP']))
@@ -62,6 +68,7 @@ def read_from_other_devices(device_driver):
     Supported devcies:
     Cisco IOS,NX-OS,ASA,ARUBA OS,PaloAlto PAN-OS,Juniper Junos,Arista EOS
     """
+    logging.info('reading user %s driver', device_driver)
     try:
         device_driver.open()
         get_facts = device_driver.get_facts()
@@ -95,11 +102,17 @@ def update_netbox(device, device_driver):
         device_version = read_from_huawei_devices(device_driver)
         device.custom_fields = {'sw_version': device_version}
         device.save()
+        logging.info('updated netbox: device: %s, version: %s',
+                     device,
+                     device_version)
         return device.custom_fields
     elif device_platform in driver_platform.keys():
         device_version = read_from_other_devices(device_driver)
         device.custom_fields = {'sw_version': device_version}
         device.save()
+        logging.info('updated netbox: device: %s, version: %s',
+                     device,
+                     device_version)
         return device.custom_fields
     else:
         device_version = 'device platform is not defined'
@@ -125,6 +138,9 @@ def generate_device_drivers(devices, device_user, device_password):
         device_driver = driver(hostname=device_ip, username=device_user,
                                password=device_password)
         device_driver_map.append((device, device_driver))
+        logging.info('generated device, driver pair: %s, %s',
+                     device,
+                     device_driver)
     return device_driver_map
 
 
