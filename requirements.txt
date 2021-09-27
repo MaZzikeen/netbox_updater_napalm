@@ -1,0 +1,10 @@
+napalm==2.5.0
+napalm-aruba-cx==0.1.4
+napalm-asa==0.1.4
+napalm-huawei-vrp==0.1.5
+napalm-panos==0.5.2
+ncclient==0.6.9
+netmiko==2.4.2
+paramiko==2.7.2
+pynetbox==6.1.3
+pytest==6.2.5
