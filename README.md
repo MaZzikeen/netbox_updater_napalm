@@ -7,10 +7,12 @@ netbox_updater_napalm is written in Python3.
 Clone the project:
 ```
 git clone https://github.com/MaZzikeen/netbox_updater_napalm
+and then go to ./netbox_updater_napalm directory
 ```
 
 Create a virtual environment to run the script(optional):
 ```
+
 python3 -m venv venv
 source venv/bin/activate
 ```
