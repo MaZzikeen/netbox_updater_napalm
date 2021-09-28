@@ -58,6 +58,20 @@ pynetbox library is used to interact with Netbox.
 Generates a list of tuples(driver,device_driver)
 ```
 driver: napalm.get_network_driver(driver_platform[device_platform])
+NOTE: in this script platforms defined as below dictionary keys in the netbox
+driver_platform = {
+    'Cisco IOS': 'ios',
+    'Cisco Nexus': 'nxos',
+    'Cisco ASA': 'asa',
+    'Aruba OS': 'aos',
+    'PaloAlto PAN-OS': 'panos',
+    'Juniper Junos': 'junos',
+    'Arista EOS': 'eos',
+    'Huawei VRP': 'huawei_vrp'
+}
+If these platforms defined diffently on your netbox
+You should change the driver_platform keys in the script based what you defined on
+Netbox.
 ```
 napalm library uses different driver for connecting to different platforms.
 in the script driver is specified based on device_platform.
