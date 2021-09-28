@@ -69,7 +69,7 @@ driver_platform = {
     'Arista EOS': 'eos',
     'Huawei VRP': 'huawei_vrp'
 }
-If these platforms defined diffently on your netbox
+If these platforms are defined diffently on your netbox
 You should change the driver_platform keys in the script based what you defined on
 Netbox.
 ```
