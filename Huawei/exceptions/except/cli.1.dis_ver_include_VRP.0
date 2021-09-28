@@ -1,7 +1,7 @@
 {
-    "exception": "napalm.base.exceptions.ConnectAuthError",
+    "exception": "Except",
     "args": [
-        "Authentication Error"
+        "Except"
     ],
     "kwargs": {"device_ip":"foo"}
 }
